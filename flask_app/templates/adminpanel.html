@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container w-75 mx-auto">
+        <div class="d-flex align-items-start mt-4">
+            <p class="h1 mb-5">Admin Panel</p>
+        </div>
+        <div class="row">
+            <p class="h4">Quick Info:</p>
+            <p>{{ all_users|count }} RSVPs + {{ plus_ones|count }} plus ones = {{ all_users|count + plus_ones|count }} total guests</p>
+        </div>
+        <div class="row">
+            <table class="table border">
+                <thead>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">+1</th>
+                    <th scope="col">Food Choice</th>
+                    <th scope="col">+1 Food Choice</th>
+                </thead>
+                <tbody>
+                    {% for user in all_users %}
+                    <tr>
+                        <td>
+                            {{ user.id }}
+                        </td>
+                        <td>
+                            {{ user.name }}
+                        </td>
+                        <td>
+                            {{ user.email }}
+                        </td>
+                        <td>
+                            {{ user.plus_one }}
+                        </td>
+                        <td>
+                            {{ user.food_option }}
+                        </td>
+                        <td>
+                            {{ user.plus_one_food }}
+                        </td>
+                    {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
